@@ -19,10 +19,20 @@
 {
     [super viewDidLoad];
 
+    NSString *password = @"123456";
+    NSLog(@"MD5:%@", [self md5WithString:password]);
+    NSLog(@"sha1:%@", [self sha1WithString:password]);
+    NSLog(@"MD5_base64:%@", [self md5_base64WithString:password]);
+    NSLog(@"sha1_base64:%@", [self sha1_base64WithString:password]);
+    NSLog(@"base64:%@", [self base64EncodedStringWithString:password]);
 }
 
+/*
+ HASH算法是密码学的基础，常用：MD5、SHA。
+ 两条性质：不可逆、无冲突（不可能两个值的hash值相同）
+ */
 #pragma mark - md5
-+ (NSString *)md5WithString:(NSString *)input
+- (NSString *)md5WithString:(NSString *)input
 {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
@@ -35,6 +45,54 @@
     }
     return  output;
 }
+
+// 结合base64
+- (NSString *)md5_base64WithString:(NSString *)input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, (int)strlen(cStr), digest );
+    
+    NSData * base64 = [[NSData alloc] initWithBytes:digest length:CC_MD5_DIGEST_LENGTH];
+    NSLog(@"MD5:%@", base64);
+    return [base64 base64EncodedStringWithOptions:0];;
+}
+
+
+#pragma mark - sha1
+- (NSString*)sha1WithString:(NSString *)input
+{
+    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    
+    NSData *data = [NSData dataWithBytes:cstr length:input.length];
+    //使用对应的CC_SHA1,CC_SHA256,CC_SHA384,CC_SHA512的长度分别是20,32,48,64
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    //使用对应的CC_SHA256,CC_SHA384,CC_SHA512
+    CC_SHA1(data.bytes, (int)data.length, digest);
+    
+    NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return output;
+}
+
+// 结合base64
+- (NSString *)sha1_base64WithString:(NSString *)input
+{
+    const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:input.length];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (int)data.length, digest);
+    
+    NSData * base64 = [[NSData alloc]initWithBytes:digest length:CC_SHA1_DIGEST_LENGTH];
+
+    return [base64 base64EncodedStringWithOptions:0];
+}
+
 
 #pragma mark - Base64
 /*
