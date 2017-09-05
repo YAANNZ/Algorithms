@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface ViewController ()
 
@@ -23,8 +24,10 @@
     NSLog(@"MD5:%@", [self md5WithString:password]);
     NSLog(@"sha1:%@", [self sha1WithString:password]);
     NSLog(@"MD5_base64:%@", [self md5_base64WithString:password]);
+    NSLog(@"md5AddSalt:%@", [self md5AddSaltWithString:password]);
     NSLog(@"sha1_base64:%@", [self sha1_base64WithString:password]);
     NSLog(@"base64:%@", [self base64EncodedStringWithString:password]);
+    NSLog(@"HMAC:%@", [self HMACWithString:password key:@"15:33:32"]);
 }
 
 /*
@@ -58,8 +61,24 @@
     return [base64 base64EncodedStringWithOptions:0];;
 }
 
+// 加盐
+static NSString *salt = @"aslkajd#$@&u278gjkh#${[]!";
+- (NSString *)md5AddSaltWithString:(NSString *)input
+{
+    NSString *saltStr = [input stringByAppendingString:salt];
+    const char *cStr = [saltStr UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    return  output;
+}
 
-#pragma mark - sha1
+#pragma mark - sha1 (Secure Hash Algorithm，SHA)
 - (NSString*)sha1WithString:(NSString *)input
 {
     const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
@@ -113,6 +132,38 @@
     NSData *data = [[NSData alloc] initWithBase64EncodedString:Base64Str options:0];
     return [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
 }
+
+#pragma mark - HMAC (Hash-based Message Authentication Code)
+/*
+ hmac主要应用在身份验证中，它的使用方法是这样的：
+ (1) 客户端发出登录请求（假设是浏览器的GET请求）
+ (2) 服务器返回一个随机值，并在会话中记录这个随机值
+ (3) 客户端将该随机值作为密钥，用户密码进行hmac运算，然后提交给服务器
+ (4) 服务器读取用户数据库中的用户密码和步骤2中发送的随机值做与客户端一样的hmac运算，然后与用户发送的结果比较，如果结果一致则验证用户合法
+ 在这个过程中，可能遭到安全攻击的是服务器发送的随机值和用户发送的hmac结果，而对于截获了这两个值的黑客而言这两个值是没有意义的，绝无获取用户密码的可能性，随机值的引入使hmac只在当前会话中有效，大大增强了安全性和实用性。大多数的语言都实现了hmac算法，比如php的mhash、python的hmac.py、java的MessageDigest类，在web验证中使用hmac也是可行的，用js进行md5运算的速度也是比较快的。
+ */
+// HMAC
+- (NSString *)HMACWithString:(NSString *)input key:(NSString *)keyStr
+{
+    const char *cKey  = [keyStr cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *cData = [input cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+    
+    //关键部分
+    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    
+    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC
+                                          length:sizeof(cHMAC)];
+    
+    //将加密结果进行一次BASE64编码。
+    NSString *hash = [HMAC base64EncodedStringWithOptions:0];
+    return hash;
+}
+
+
+
+
 
 
 
