@@ -19,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     NSString *password = @"123456";
     NSLog(@"MD5:%@", [self md5WithString:password]);
     NSLog(@"sha1:%@", [self sha1WithString:password]);
@@ -162,6 +162,24 @@ static NSString *salt = @"aslkajd#$@&u278gjkh#${[]!";
 }
 
 
+#pragma mark - bubbleSort
+//冒泡排序
+- (void)bubbleSortWithArray:(NSMutableArray *)arrData{
+    for (int i=0; i<arrData.count; i++) {
+        for (int j = 1; j<arrData.count - i; j++) {
+            if ([arrData objectAtIndex:j-1]>[arrData objectAtIndex:j]) {
+                [self swapWithData:arrData index1:j-1 index2:j];
+            }
+        }
+    }
+}
+
+- (void)swapWithData:(NSMutableArray *)arrData index1:(NSUInteger)index1  index2:(NSUInteger)index2
+{
+    NSNumber *temp = [arrData objectAtIndex:index1];
+    [arrData replaceObjectAtIndex:index1 withObject:[arrData objectAtIndex:index2]];
+    [arrData replaceObjectAtIndex:index2 withObject:temp];
+}
 
 
 
