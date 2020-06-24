@@ -181,7 +181,7 @@ static NSString *salt = @"aslkajd#$@&u278gjkh#${[]!";
     [arrData replaceObjectAtIndex:index2 withObject:temp];
 }
 
-
+#pragma mark - AES128（对称加密）
 
 
 
