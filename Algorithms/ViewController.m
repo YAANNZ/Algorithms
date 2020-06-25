@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import "AESCipher.h"
 
 @interface ViewController ()
 
@@ -28,6 +29,8 @@
     NSLog(@"sha1_base64:%@", [self sha1_base64WithString:password]);
     NSLog(@"base64:%@", [self base64EncodedStringWithString:password]);
     NSLog(@"HMAC:%@", [self HMACWithString:password key:@"15:33:32"]);
+    
+    [self encryptString];
 }
 
 /*
@@ -182,7 +185,13 @@ static NSString *salt = @"aslkajd#$@&u278gjkh#${[]!";
 }
 
 #pragma mark - AES128（对称加密）
-
+- (void)encryptString
+{
+    NSString *tempString = @"jiamiqian";
+    NSString *keyStr = @"aes--128--string";
+    NSString *tString = aesEncryptString(tempString, keyStr);
+    NSLog(@"%@--%@--%@", tempString, tString, aesDecryptString(tString, keyStr));
+}
 
 
 

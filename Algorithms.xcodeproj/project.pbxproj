@@ -15,6 +15,7 @@
 		19A2D8531F4F276100341A7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19A2D8511F4F276100341A7E /* LaunchScreen.storyboard */; };
 		19A2D85E1F4F276100341A7E /* AlgorithmsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A2D85D1F4F276100341A7E /* AlgorithmsTests.m */; };
 		19A2D8691F4F276100341A7E /* AlgorithmsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A2D8681F4F276100341A7E /* AlgorithmsUITests.m */; };
+		19F1231324A4EEA0001FA660 /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1231124A4EEA0001FA660 /* AESCipher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		19A2D8641F4F276100341A7E /* AlgorithmsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A2D8681F4F276100341A7E /* AlgorithmsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgorithmsUITests.m; sourceTree = "<group>"; };
 		19A2D86A1F4F276100341A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19F1231124A4EEA0001FA660 /* AESCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCipher.m; sourceTree = "<group>"; };
+		19F1231224A4EEA0001FA660 /* AESCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCipher.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 		19A2D8421F4F276100341A7E /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				19F1231024A4EEA0001FA660 /* Tool */,
 				19A2D8461F4F276100341A7E /* AppDelegate.h */,
 				19A2D8471F4F276100341A7E /* AppDelegate.m */,
 				19A2D8491F4F276100341A7E /* ViewController.h */,
@@ -138,6 +142,15 @@
 				19A2D86A1F4F276100341A7E /* Info.plist */,
 			);
 			path = AlgorithmsUITests;
+			sourceTree = "<group>";
+		};
+		19F1231024A4EEA0001FA660 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				19F1231224A4EEA0001FA660 /* AESCipher.h */,
+				19F1231124A4EEA0001FA660 /* AESCipher.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +242,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -278,6 +292,7 @@
 			files = (
 				19A2D84B1F4F276100341A7E /* ViewController.m in Sources */,
 				19A2D8481F4F276100341A7E /* AppDelegate.m in Sources */,
+				19F1231324A4EEA0001FA660 /* AESCipher.m in Sources */,
 				19A2D8451F4F276100341A7E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +535,7 @@
 				19A2D86F1F4F276100341A7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19A2D8701F4F276100341A7E /* Build configuration list for PBXNativeTarget "AlgorithmsTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +544,7 @@
 				19A2D8721F4F276100341A7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19A2D8731F4F276100341A7E /* Build configuration list for PBXNativeTarget "AlgorithmsUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +553,7 @@
 				19A2D8751F4F276100341A7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
