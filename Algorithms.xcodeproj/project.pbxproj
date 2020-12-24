@@ -15,7 +15,8 @@
 		19A2D8531F4F276100341A7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19A2D8511F4F276100341A7E /* LaunchScreen.storyboard */; };
 		19A2D85E1F4F276100341A7E /* AlgorithmsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A2D85D1F4F276100341A7E /* AlgorithmsTests.m */; };
 		19A2D8691F4F276100341A7E /* AlgorithmsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A2D8681F4F276100341A7E /* AlgorithmsUITests.m */; };
-		19F1231324A4EEA0001FA660 /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1231124A4EEA0001FA660 /* AESCipher.m */; };
+		6989F96F258A0C3A0086A702 /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6989F96E258A0C3A0086A702 /* AESCipher.m */; };
+		69FA122D25934A4300259743 /* AlgTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FA122C25934A4300259743 /* AlgTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +53,10 @@
 		19A2D8641F4F276100341A7E /* AlgorithmsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A2D8681F4F276100341A7E /* AlgorithmsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgorithmsUITests.m; sourceTree = "<group>"; };
 		19A2D86A1F4F276100341A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19F1231124A4EEA0001FA660 /* AESCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCipher.m; sourceTree = "<group>"; };
-		19F1231224A4EEA0001FA660 /* AESCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCipher.h; sourceTree = "<group>"; };
+		6989F96D258A0C3A0086A702 /* AESCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCipher.h; sourceTree = "<group>"; };
+		6989F96E258A0C3A0086A702 /* AESCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCipher.m; sourceTree = "<group>"; };
+		69FA122B25934A4300259743 /* AlgTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlgTestViewController.h; sourceTree = "<group>"; };
+		69FA122C25934A4300259743 /* AlgTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgTestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				19A2D8511F4F276100341A7E /* LaunchScreen.storyboard */,
 				19A2D8541F4F276100341A7E /* Info.plist */,
 				19A2D8431F4F276100341A7E /* Supporting Files */,
+				69FA122B25934A4300259743 /* AlgTestViewController.h */,
+				69FA122C25934A4300259743 /* AlgTestViewController.m */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -147,8 +152,8 @@
 		19F1231024A4EEA0001FA660 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				19F1231224A4EEA0001FA660 /* AESCipher.h */,
-				19F1231124A4EEA0001FA660 /* AESCipher.m */,
+				6989F96D258A0C3A0086A702 /* AESCipher.h */,
+				6989F96E258A0C3A0086A702 /* AESCipher.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -292,7 +297,8 @@
 			files = (
 				19A2D84B1F4F276100341A7E /* ViewController.m in Sources */,
 				19A2D8481F4F276100341A7E /* AppDelegate.m in Sources */,
-				19F1231324A4EEA0001FA660 /* AESCipher.m in Sources */,
+				69FA122D25934A4300259743 /* AlgTestViewController.m in Sources */,
+				6989F96F258A0C3A0086A702 /* AESCipher.m in Sources */,
 				19A2D8451F4F276100341A7E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
