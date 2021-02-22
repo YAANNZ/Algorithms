@@ -20,7 +20,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    NSString *password = @"123456";
+        NSLog(@"MD5:%@", [self md5WithString:password]);
+        NSLog(@"sha1:%@", [self sha1WithString:password]);
+        NSLog(@"MD5_base64:%@", [self md5_base64WithString:password]);
+        NSLog(@"md5AddSalt:%@", [self md5AddSaltWithString:password]);
+        NSLog(@"sha1_base64:%@", [self sha1_base64WithString:password]);
+        NSLog(@"base64:%@", [self base64EncodedStringWithString:password]);
+        NSLog(@"HMAC:%@", [self HMACWithString:password key:@"15:33:32"]);
+        
+        [self encryptString];
+        
+        // 0 1 1 2 3 5 8 13 求第n个费纳波契数
+        NSLog(@"%d", [self fib:32]);
+        NSLog(@"%d", [self fib2:32]);
 }
 
 - (int)fib:(int)input
@@ -215,5 +228,7 @@ static NSString *salt = @"aslkajd#$@&u278gjkh#${[]!";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end

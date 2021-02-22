@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19049A2725E39F620035C98A /* algorithms-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "algorithms-Bridging-Header.h"; sourceTree = "<group>"; };
 		19AFD11F25E382CC00E49B38 /* algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AFD12225E382CC00E49B38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19AFD12425E382CC00E49B38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 				19AFD12B25E382CE00E49B38 /* Assets.xcassets */,
 				19AFD12D25E382CE00E49B38 /* LaunchScreen.storyboard */,
 				19AFD13025E382CE00E49B38 /* Info.plist */,
+				19049A2725E39F620035C98A /* algorithms-Bridging-Header.h */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -465,6 +467,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyn.algorithms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "algorithms/algorithms-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -484,6 +487,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyn.algorithms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "algorithms/algorithms-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

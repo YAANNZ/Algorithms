@@ -9,7 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AlgTestViewController : UIViewController
+@protocol AlgTestViewControllerProtocol <NSObject>
+
+//@required
+- (void)testMethod;
+
+@end
+
+@interface AlgTestViewController : UIViewController <AlgTestViewControllerProtocol>
 
 @end
 
