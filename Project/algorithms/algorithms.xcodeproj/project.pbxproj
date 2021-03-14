@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1940367225F740F4005415B2 /* AlgTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD16025E3838000E49B38 /* AlgTestViewController.m */; };
+		1940368925FCB6C9005415B2 /* NSString+test.m in Sources */ = {isa = PBXBuildFile; fileRef = 1940368825FCB6C9005415B2 /* NSString+test.m */; };
 		19AFD12325E382CC00E49B38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD12225E382CC00E49B38 /* AppDelegate.swift */; };
 		19AFD12525E382CC00E49B38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD12425E382CC00E49B38 /* SceneDelegate.swift */; };
 		19AFD12725E382CC00E49B38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD12625E382CC00E49B38 /* ViewController.swift */; };
@@ -16,7 +18,6 @@
 		19AFD13A25E382CE00E49B38 /* algorithmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD13925E382CE00E49B38 /* algorithmsTests.swift */; };
 		19AFD14525E382CF00E49B38 /* algorithmsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD14425E382CF00E49B38 /* algorithmsUITests.swift */; };
 		19AFD15825E3830800E49B38 /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD15625E3830800E49B38 /* AESCipher.m */; };
-		19AFD16125E3838000E49B38 /* AlgTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD16025E3838000E49B38 /* AlgTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		19049A2725E39F620035C98A /* algorithms-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "algorithms-Bridging-Header.h"; sourceTree = "<group>"; };
+		1940368725FCB6C9005415B2 /* NSString+test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+test.h"; sourceTree = "<group>"; };
+		1940368825FCB6C9005415B2 /* NSString+test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+test.m"; sourceTree = "<group>"; };
+		1940368E25FCFBC2005415B2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		19AFD11F25E382CC00E49B38 /* algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AFD12225E382CC00E49B38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19AFD12425E382CC00E49B38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1940368D25FCFBC1005415B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1940368E25FCFBC2005415B2 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		19AFD11625E382CC00E49B38 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +102,7 @@
 				19AFD13825E382CE00E49B38 /* algorithmsTests */,
 				19AFD14325E382CF00E49B38 /* algorithmsUITests */,
 				19AFD12025E382CC00E49B38 /* Products */,
+				1940368D25FCFBC1005415B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +157,8 @@
 				19AFD15625E3830800E49B38 /* AESCipher.m */,
 				19AFD15F25E3838000E49B38 /* AlgTestViewController.h */,
 				19AFD16025E3838000E49B38 /* AlgTestViewController.m */,
+				1940368725FCB6C9005415B2 /* NSString+test.h */,
+				1940368825FCB6C9005415B2 /* NSString+test.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -278,9 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1940367225F740F4005415B2 /* AlgTestViewController.m in Sources */,
+				1940368925FCB6C9005415B2 /* NSString+test.m in Sources */,
 				19AFD12725E382CC00E49B38 /* ViewController.swift in Sources */,
 				19AFD12325E382CC00E49B38 /* AppDelegate.swift in Sources */,
-				19AFD16125E3838000E49B38 /* AlgTestViewController.m in Sources */,
 				19AFD15825E3830800E49B38 /* AESCipher.m in Sources */,
 				19AFD12525E382CC00E49B38 /* SceneDelegate.swift in Sources */,
 			);

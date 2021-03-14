@@ -9,23 +9,118 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 #import "AESCipher.h"
+#import <objc/runtime.h>
+#import "NSString+test.h"
+
+@interface Person: NSObject
+{
+    NSString *_ivarOne;
+}
+@property (copy, atomic) NSArray *ary;
+
++ (void)testMethoddClass;
+- (void)testMethodd;
+
+@end
+
+@implementation Person
+
+- (void)testMethodd {
+    NSLog(@"invoke testMethodd");
+}
+
+@end
+
 
 @interface AlgTestViewController ()
+
+@property (assign, atomic) Person *per;
 
 @end
 
 @implementation AlgTestViewController
 
 
++ (void)load {
+    
+//    Person *p;
+//    [p testMethodd];
+    
+//    Person *p = [[Person alloc] init];
+//    p.ary = [NSArray new];
+//    NSLog(@"%ld", p.ary.count);
+    
+    
+    NSString *str = @"123";
+    [str compare:@"1"];
+    
+   
+}
 
-
++ (void)initialize {
+    
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+//    self.per = [Person new];
+//    NSLog(self.per);
     
+//    Person *p = [Person new];
+//    self.per = p;
+//    NSLog(self.per.ary);
+    
+//    Person *p = [Person alloc];
+//    [p testMethodd];
+    
+    Person *p1 = [Person alloc];
+    Person *p2 = [p1 init];
+    Person *p3 = [p1 init];
+    
+    NSLog(@"%@ - %p - %p",p1,p1,&p1);
+    NSLog(@"%@ - %p - %p",p2,p2,&p2);
+    NSLog(@"%@ - %p - %p",p3,p3,&p3);
+    
+    p1.ary = [NSArray arrayWithObjects:@"1212", nil];
+    NSLog(@"%d", p2.ary.count);
+    NSLog(@"%@", p3.ary.firstObject);
+    
+    [self getPropertyList];
+    [self getIvarList];
+    
+    unsigned int outCount ;
+    Method *list = class_copyMethodList([Person class], &outCount);
+    for (int i = 0; i < outCount; i++) {
+        NSLog(@"%s", sel_getName(method_getName(list[i])));
+    }
+
+    // 点击事件
+    self.view.backgroundColor = [UIColor grayColor];
+    UIButton *footerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [footerBtn setTitle:@"button1" forState:UIControlStateNormal];
+    [footerBtn setBackgroundColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0]];
+    [footerBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [footerBtn addTarget:self action:@selector(button1Click) forControlEvents:UIControlEventTouchUpInside];
+    footerBtn.frame = CGRectMake(100, 100, 100, 100);
+    [self.view addSubview:footerBtn];
+    
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 setTitle:@"button2" forState:UIControlStateNormal];
+    [button2 setBackgroundColor:[UIColor purpleColor]];
+    [button2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button2 addTarget:self action:@selector(button2Click) forControlEvents:UIControlEventTouchUpInside];
+    button2.frame = CGRectMake(100, 150, 100, 100);
+    [self.view addSubview:button2];
+    
+    NSMutableArray *ary = [NSMutableArray array];
+//    [ary addObject:CGRectMake(0, 0, 10, 10)];
+//    [UIImage imageNamed:<#(nonnull NSString *)#>];
+//    [UIImage imageWithContentsOfFile:<#(nonnull NSString *)#>];
+    
+    // 加密
     NSString *password = @"123456";
     NSLog(@"MD5:%@", [self md5WithString:password]);
     NSLog(@"sha1:%@", [self sha1WithString:password]);
@@ -40,6 +135,60 @@
     // 0 1 1 2 3 5 8 13 求第n个费纳波契数
     NSLog(@"%d", [self fib:32]);
     NSLog(@"%d", [self fib2:32]);
+    
+//    NSArray *a = [NSArray arrayWithObject:CGRectZero];
+//    NSArray *a = [NSArray arrayWithObject:nil];
+//    NSArray *a = [NSArray arrayWithObjects:nil, nil];
+}
+
+- (void)getPropertyList
+{
+    unsigned int outCount ;
+    objc_property_t *propertyList = class_copyPropertyList([Person class], &outCount);//获取类属性列表
+    for (unsigned int i = 0;i < outCount;i ++ )
+    {
+        objc_property_t property = propertyList[i];
+        const char *propertyName = property_getName(property);//获取属性的名字
+        const char *propertyDesc = property_getAttributes(property);//获取属性整体描述
+        const char *propertyValue = property_copyAttributeValue(property, propertyName);//获取属性的值
+        NSLog(@"\n\n%s 属性的描述是:%s ==== 值是：%s",propertyName,propertyDesc,propertyValue);
+        
+        unsigned int attCount;
+        objc_property_attribute_t *attList = property_copyAttributeList(property, &attCount);//获取属性的描述列表，结果是一个类型为objc_property_attribute_t结构体组成的数组
+        for (unsigned int j = 0; j < attCount; j ++) {
+            objc_property_attribute_t att = attList[j];
+            const char * name = att.name;
+            const char * value = att.value;
+            NSLog(@"%s 属性的名字是 %s 值是:%s",propertyName,name,value);
+        }
+    }
+}
+
+- (void)getIvarList {
+    unsigned int ivarCount;
+    //获取类成员变量列表，包括类的属性property
+    Ivar *ivarList = class_copyIvarList([Person class], &ivarCount);
+    for (unsigned int i = 0; i < ivarCount; i ++) {
+        //获取指定成员变量的名字
+        const char *ivarName = ivar_getName(ivarList[i]);
+        //获取成员变量的类型 类型参考property_copyAttributeList中name为T的值
+        const char *ivarTypeEncoding = ivar_getTypeEncoding(ivarList[i]);
+        //获取成员变量在类对象中的内存偏移值
+        ptrdiff_t ivarOffset = ivar_getOffset(ivarList[i]);
+        NSLog(@"ivarList[i]成员变量的名字是：%s，类型是：%s，偏移是：%td",ivarName,ivarTypeEncoding,ivarOffset);
+    }
+    
+    
+}
+
+- (void)button1Click
+{
+    NSLog(@"button1");
+}
+
+- (void)button2Click
+{
+    NSLog(@"button22222");
 }
 
 - (int)fib:(int)input
@@ -234,6 +383,7 @@ static NSString *salt = @"aslkajd#$@&u278gjkh#${[]!";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 
