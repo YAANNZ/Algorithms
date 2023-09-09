@@ -52,7 +52,7 @@
     
     
     NSString *str = @"123";
-    [str compare:@"1"];
+//    [str compare:@"1"];
     
    
 }

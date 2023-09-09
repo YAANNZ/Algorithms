@@ -7,17 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
 
+    var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let vc = AlgTestViewController()
-        self.view.addSubview(vc.view)
-        vc.view.frame = self.view.bounds
-        self.addChild(vc)
-        print(vc.view)
+        tableView = UITableView(frame: self.view.bounds, style: UITableView.Style.plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
         
    
 //        var a = Array<CGRect>.init()
@@ -41,8 +43,39 @@ class ViewController: UIViewController {
     }
     
     
-    
+    //MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "")
+        var titleLabel = UILabel.init(frame: CGRect(x: 10, y: 0, width: 100, height: 50))
+        titleLabel.text = "TestAlgorithms"
+        cell.contentView.addSubview(titleLabel)
+        return cell
+    }
+
+    //MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row == 0 {
+            let vc = AlgTestViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = YNLinkedListTestVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
+
+
+
 
 
 func mergeArray(_ aryA: Array<Int>, _ aryB: Array<Int>) -> Array<Int> {

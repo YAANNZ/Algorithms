@@ -18,6 +18,10 @@
 		19AFD13A25E382CE00E49B38 /* algorithmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD13925E382CE00E49B38 /* algorithmsTests.swift */; };
 		19AFD14525E382CF00E49B38 /* algorithmsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD14425E382CF00E49B38 /* algorithmsUITests.swift */; };
 		19AFD15825E3830800E49B38 /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AFD15625E3830800E49B38 /* AESCipher.m */; };
+		7582DDD02AAC4810009E7FD7 /* YNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582DDCC2AAC4810009E7FD7 /* YNNode.swift */; };
+		7582DDD12AAC4810009E7FD7 /* YNLinkedListTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7582DDCD2AAC4810009E7FD7 /* YNLinkedListTestVC.xib */; };
+		7582DDD22AAC4810009E7FD7 /* YNLinkedListTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582DDCE2AAC4810009E7FD7 /* YNLinkedListTestVC.swift */; };
+		7582DDD32AAC4810009E7FD7 /* YNLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582DDCF2AAC4810009E7FD7 /* YNLinkedList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		19AFD15725E3830800E49B38 /* AESCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCipher.h; sourceTree = "<group>"; };
 		19AFD15F25E3838000E49B38 /* AlgTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlgTestViewController.h; sourceTree = "<group>"; };
 		19AFD16025E3838000E49B38 /* AlgTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgTestViewController.m; sourceTree = "<group>"; };
+		7582DDCC2AAC4810009E7FD7 /* YNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNNode.swift; sourceTree = "<group>"; };
+		7582DDCD2AAC4810009E7FD7 /* YNLinkedListTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YNLinkedListTestVC.xib; sourceTree = "<group>"; };
+		7582DDCE2AAC4810009E7FD7 /* YNLinkedListTestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNLinkedListTestVC.swift; sourceTree = "<group>"; };
+		7582DDCF2AAC4810009E7FD7 /* YNLinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YNLinkedList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 		19AFD12125E382CC00E49B38 /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				7582DDCB2AAC4810009E7FD7 /* LinkedList */,
 				19AFD15525E3830800E49B38 /* Tool */,
 				19AFD12225E382CC00E49B38 /* AppDelegate.swift */,
 				19AFD12425E382CC00E49B38 /* SceneDelegate.swift */,
@@ -161,6 +170,17 @@
 				1940368825FCB6C9005415B2 /* NSString+test.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		7582DDCB2AAC4810009E7FD7 /* LinkedList */ = {
+			isa = PBXGroup;
+			children = (
+				7582DDCC2AAC4810009E7FD7 /* YNNode.swift */,
+				7582DDCD2AAC4810009E7FD7 /* YNLinkedListTestVC.xib */,
+				7582DDCE2AAC4810009E7FD7 /* YNLinkedListTestVC.swift */,
+				7582DDCF2AAC4810009E7FD7 /* YNLinkedList.swift */,
+			);
+			path = LinkedList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +288,7 @@
 			files = (
 				19AFD12F25E382CE00E49B38 /* LaunchScreen.storyboard in Resources */,
 				19AFD12C25E382CE00E49B38 /* Assets.xcassets in Resources */,
+				7582DDD12AAC4810009E7FD7 /* YNLinkedListTestVC.xib in Resources */,
 				19AFD12A25E382CD00E49B38 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,11 +314,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7582DDD02AAC4810009E7FD7 /* YNNode.swift in Sources */,
 				1940367225F740F4005415B2 /* AlgTestViewController.m in Sources */,
 				1940368925FCB6C9005415B2 /* NSString+test.m in Sources */,
 				19AFD12725E382CC00E49B38 /* ViewController.swift in Sources */,
 				19AFD12325E382CC00E49B38 /* AppDelegate.swift in Sources */,
 				19AFD15825E3830800E49B38 /* AESCipher.m in Sources */,
+				7582DDD22AAC4810009E7FD7 /* YNLinkedListTestVC.swift in Sources */,
+				7582DDD32AAC4810009E7FD7 /* YNLinkedList.swift in Sources */,
 				19AFD12525E382CC00E49B38 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
